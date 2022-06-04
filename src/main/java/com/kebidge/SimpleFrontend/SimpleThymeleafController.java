@@ -34,7 +34,7 @@ public class SimpleThymeleafController {
     }
 
     @PostMapping("/")
-    public String addItem(@RequestParam String newitem, @RequestParam int amount, Model model) {
+    public String addItem(@RequestParam String newitem, Model model) {
     
         SimpleItem item = new SimpleItem();
         item.item = newitem;
