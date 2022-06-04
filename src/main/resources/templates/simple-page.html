@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+ 
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>SimpleApp</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+ 
+    <link rel="stylesheet" href="style.css"/>
+ 
+    <body>
+
+        <div>
+            <h1>Simple Item List</h1>
+            <h3>
+                <span th:text="'Welcome!'"></span>
+            </h3>
+            <form method="POST" th:action="@{/}">
+                <label for="newitem">New Simple Item</label>
+                <input type="text" name="newitem" th:value="${newitem}" />
+                <input type="submit" value="Add!">
+            </form>
+        </div>
+
+        <div th:unless="${#lists.isEmpty(items)}">   
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Item</th>
+                </tr>
+                <tr th:each="item : ${items}">
+                    <td th:text="${item.id}"/>
+                </tr>
+            </table>
+        </div>
+
+        <div th:if="${#lists.isEmpty(items)}">
+            <table>
+                <tr>
+                    <th>Item</th>
+                </tr>
+                <tr>
+                    <td>Nothing</td>
+                </tr>
+            </table>
+        </div>
+ 
+    </body>
+</html>
